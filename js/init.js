@@ -46,4 +46,4 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
 });
 
-let conectado;
+let conectado=false;
