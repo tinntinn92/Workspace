@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 
+
+
 const login = () => {
 
     let usuario = document.getElementById('user');
@@ -21,12 +23,15 @@ const login = () => {
         datos.pass = pass.value;
         datos.estado = 'conectado';
 
-        conectado = true
+
 
         location.href = '../Workspace/index.html';
 
-        sessionStorage.setItem('datos', JSON.stringify(datos));
+        localStorage.setItem('datos', JSON.stringify(datos));
+
+        conectado=true;
 
 
     }
 }
+
