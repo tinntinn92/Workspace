@@ -29,7 +29,7 @@ const login = () => {
 
         localStorage.setItem('datos', JSON.stringify(datos));
 
-        conectado=true;
+
 
 
     }

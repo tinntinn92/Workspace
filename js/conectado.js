@@ -3,11 +3,11 @@
 
 const checkStatus = () => {
 
-    
 
-    if (!conectado) {
 
-        
+    if (localStorage.length === 0) {
+
+
         location.href = ('../Workspace/login.html');
     }
 

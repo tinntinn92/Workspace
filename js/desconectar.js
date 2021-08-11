@@ -6,4 +6,6 @@ const desconectar = () => {
 
     checkStatus();
 
+
+
 }
