@@ -1,11 +1,17 @@
 
 
+
+
+
 const desconectar = () => {
+    
     localStorage.clear();
-    location.href = 'index.html';
+    
+    location.href = '../Workspace/index.html';
+    
 
     checkStatus();
 
 
 
-}
+};
