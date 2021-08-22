@@ -20,9 +20,15 @@
       background-size: cover;
     }
   </style>
+
+   <!--google-->
+   <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="875766812579-hgnl5kelarp9gcr8aev0nm9ih4ho4l6b.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
 </head>
 
-<body class="m-0 row justify-content-center align-items-center vh-100">
+<body class="m-0 row justify-content-center align-items-center vh-100"> 
   <div class="col-auto p-5 text-center ">
     <h1 class="display-1">Ingresa tus datos</h1>
     <br>
@@ -32,11 +38,13 @@
 
       <label class="form-label" for="pass">Contraseña <input type="password" class="form-control" id="pass"
           required></label><br>
-      <button type="button" class="btn btn-primary" onclick="login();"> Ingresar</button>
+      <div type="button" class="btn btn-primary" onclick="login();"> Ingresar</div>
+      <div class=" col-auto p-5 text-center g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     </form>
 
 
   </div>
+  <script src="js/google.js"></script>
   <script src="js/login.js"></script>
   <script src="js/init.js"></script>
 
