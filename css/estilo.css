@@ -1,0 +1,8 @@
+#userImg{
+    border-radius: 50%;
+    border: 1px solid rgba(221, 221, 221, 0);;
+    width: 25%;
+    right: 0%;
+    object-fit: cover;
+    
+}

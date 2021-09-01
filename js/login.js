@@ -22,6 +22,7 @@ const login = () => {
         datos.usuario = usuario.value;
         datos.pass = pass.value;
         datos.estado = 'conectado';
+        datos.img = 'img/perfil.jpeg'
 
 
 
