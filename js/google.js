@@ -27,9 +27,9 @@ const onLoad = () => {
     <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
     <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     
-    <p><img src="${local.img}" id="userImg"><a href="#" class="py-2 d-none d-md-inline-block">${local.usuario} </a></p>
+    <p><img src="${local.img}" id="userImg"><a href="#" class="py-2 d-none d-md-inline-block" id="nombreUser">${local.usuario} </a></p>
     
-    <p><button type="button" class="btn btn-danger" id="desconectar" onclick="desconectar();">desconectar</button></p>
+    <p><button type="button" class="btn btn-danger" id="desconectar" onclick="desconectar();">Desconectar</button></p>
             
       
     

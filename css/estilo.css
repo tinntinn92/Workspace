@@ -6,3 +6,11 @@
     object-fit: cover;
     
 }
+#nombreUser{
+    margin-left: 10%;
+}
+
+#desconectar{
+    right: 0%;
+
+}
