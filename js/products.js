@@ -1,15 +1,27 @@
 var categoriesArray = [];
+let filtrada= [];
 var minCount = undefined;
 var maxCount = undefined;
+
+const buscador = () => {
+
+    let input = document.getElementById('input').value;
+    filtrada=categoriesArray.filter(function(producto){
+        return (producto.name.toLowerCase().indexOf(input.toLowerCase())>-1) || (producto.description.toLowerCase().indexOf(input.toLowerCase())>-1);
+    });
+
+    showCategoriesList(filtrada);
+}
 
 function showCategoriesList(array) {
 
     let htmlContentToAppend = "";
-    for (let i = 0; i < array.length; i++) {
-        let category = array[i];
+    for (let category of array ) {
+        
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))) {
+
             htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
         <div class="row">
@@ -52,36 +64,36 @@ const ordPrecio = () => {
 const ordPrecioDes = () => {
     categoriesArray.sort(function (a, b) {
         return a.cost - b.cost;
-        
+
     })
-    showCategoriesList(categoriesArray) 
+    showCategoriesList(categoriesArray)
 }
 
 
-document.getElementById("rangeFilterCount").addEventListener("click", function(){
+document.getElementById("rangeFilterCount").addEventListener("click", function () {
     //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
     //de productos por categoría.
     minCount = document.getElementById("rangeFilterCountMin").value;
     maxCount = document.getElementById("rangeFilterCountMax").value;
 
-    if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+    if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
         minCount = parseInt(minCount);
     }
-    else{
+    else {
         minCount = undefined;
     }
 
-    if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+    if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0) {
         maxCount = parseInt(maxCount);
     }
-    else{
+    else {
         maxCount = undefined;
     }
 
     showCategoriesList(categoriesArray);
 });
 
-document.getElementById("clearRangeFilter").addEventListener("click", function(){
+document.getElementById("clearRangeFilter").addEventListener("click", function () {
     document.getElementById("rangeFilterCountMin").value = "";
     document.getElementById("rangeFilterCountMax").value = "";
 
@@ -90,6 +102,9 @@ document.getElementById("clearRangeFilter").addEventListener("click", function()
 
     showCategoriesList(categoriesArray);
 });
+
+
+
 
 
 
@@ -104,6 +119,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showCategoriesList(categoriesArray);
         }
     });
-});
 
+    document.getElementById('input').addEventListener('keyup',()=>{
+        buscador()
+    });
+});
 
