@@ -9,10 +9,15 @@
 
   <!--google-->
   <meta name="google-signin-scope" content="profile email">
-  <meta name="google-signin-client_id" content="875766812579-hgnl5kelarp9gcr8aev0nm9ih4ho4l6b.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="875766812579-hgnl5kelarp9gcr8aev0nm9ih4ho4l6b.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="js/desconectar.js"></script>
-  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/estrellas.css">
+
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -26,7 +31,7 @@
 <body onload="onLoad()">
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between" id="barra">
-    
+
     </div>
   </nav>
 
@@ -36,6 +41,42 @@
 
   <div id="galeria">
 
+
+  </div>
+
+
+
+  <div id="newComent" class="form-group">
+    <br>
+    <h3 class="text-center">Nuevo comentario</h3>
+    <div class="row justify-content-center">
+      <div class="container center">
+        <form action="">
+
+          <!--http://w3.unpocodetodo.info/css3/estrellas.php-->
+          
+          <p>Puntuacion:</p>
+          <p class="clasificacion" id="puntaje">
+            <input id="radio1" type="radio" name="estrellas" value="5">
+            <label for="radio1"><i class="fas fa-star"></i></label>
+            <input id="radio2" type="radio" name="estrellas" value="4">
+            <label for="radio2"><i class="fas fa-star"></i></label>
+            <input id="radio3" type="radio" name="estrellas" value="3">
+            <label for="radio3"><i class="fas fa-star"></i></label>
+            <input id="radio4" type="radio" name="estrellas" value="2">
+            <label for="radio4"><i class="fas fa-star"></i></label>
+            <input id="radio5" type="radio" name="estrellas" value="1">
+            <label for="radio5"><i class="fas fa-star"></i></label>
+          </p>
+
+          <textarea name="" id="comentario" cols="100" rows="10" placeholder="Escriba su comentario aqui..."
+            spellcheck="true"></textarea>
+          <br>
+          <input type="button" value="Enviar comentario" class="btn btn-primary" onclick="newComent()">
+        </form>
+
+      </div>
+    </div>
   </div>
 
   <div id="comentarios">
