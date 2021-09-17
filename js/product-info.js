@@ -13,9 +13,11 @@ const showProduct = (producto) => {
                         <p class="lead text-muted">
                         `+ producto.description + `
                         </p>
+                    <h4> Por solo `+ producto.currency +`$` +producto.cost + `</h4>
                 </div>
             </div>
         </section>
+
 
         
         <div class='row justify-content-center'>
@@ -28,28 +30,26 @@ const showProduct = (producto) => {
 
 
 const showGaleria = (producto) => {
+let galeria= `<br><h3 class="text-center">Galeria</h3><br>
+<div class="tz-gallery">
+<div class="row"> `;
 
-    document.getElementById('galeria').innerHTML = `
-    <br><h3 class="text-center">Galeria</h3><br>
-<div class="tz-gallery">    
-    <div class="row">
-        <div class="col-sm-3 col-md-3">
-            <a href="`+ producto.images[1] + `" target="_blank"><img src="` + producto.images[1] + `" class="img-thumbnail"></a>
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <a href="`+ producto.images[2] + `" target="_blank"><img src="` + producto.images[2] + `" class="img-thumbnail"></a>
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <a href="`+ producto.images[3] + `" target="_blank"><img src="` + producto.images[3] + `" class="img-thumbnail"></a>
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <a href="`+ producto.images[4] + `" target="_blank"><img src="` + producto.images[4] + `" class="img-thumbnail"></a>
-        </div>
+for(let i=1; i<producto.images.length; i++){
+
+    galeria+=`<div class="col-sm-3 col-md-3">
+    <a href="`+ producto.images[i] + `" target="_blank"><img src="` + producto.images[i] + `" class="img-thumbnail"></a>
+</div>`
+};
+
+    document.getElementById('galeria').innerHTML = galeria + `
+       
+    
+        
     
     </div>
 </div>
 `
-}
+};
 
 const califica = (num) => {
 
