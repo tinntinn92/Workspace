@@ -1,3 +1,8 @@
+body {
+  background: url(../img/fondoBody.jpg) no-repeat fixed center center;
+  background-size: cover;
+}
+
 .jumbotron, .card-body, .container, .site-header{
     font-family: 'Raleway', serif !important;
 }

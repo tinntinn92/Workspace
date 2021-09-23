@@ -70,7 +70,7 @@ const califica = (num) => {
 
 }
 
-const showComents = (comentario, imagen) => {
+const showComents = (comentario) => {
 
 
 
