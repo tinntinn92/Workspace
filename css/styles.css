@@ -156,3 +156,10 @@ a.custom-card:hover {
   background-color: grey;
 
 }
+
+.carro {
+ 
+  width: 600px;
+  height: 400px;
+  margin-right: 25%;
+}

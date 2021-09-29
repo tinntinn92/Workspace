@@ -21,12 +21,58 @@ const showProduct = (producto) => {
 
 
         
-        <div class='row justify-content-center'>
-            <a href='`+ producto.images[0] + `' target='_blank'><img src='` + producto.images[0] + `' class='img-thumbnail'> </a>
+        <div class='row '>
+         <div class='col-4'></div>  
+        <div id="carousel" class="carousel slide col-4" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel" data-slide-to="1"></li>
+    <li data-target="#carousel" data-slide-to="2"></li>
+    <li data-target="#carousel" data-slide-to="3"></li>
+    <li data-target="#carousel" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner ">
+    <div class="carousel-item active">
+      <img src="${producto.images[0]}" class="carro  " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="${producto.images[1]}" class="carro  " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="${producto.images[2]}" class="carro  " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="${producto.images[3]}" class="carro " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="${producto.images[4]}" class="carro" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+        
+      </div>
+        
+        
+        
+        
+       
+       
         </div>
     
    `
 
+}
+const carrousel = () =>{
+
+   
 }
 
 
@@ -187,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productInfo = resultObj.data;
 
             showProduct(productInfo);
-            showGaleria(productInfo);
+            
         }
     });
 
