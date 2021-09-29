@@ -1,5 +1,6 @@
 let productInfo = {};
 let productComent = [];
+let categoriesArray= [];
 
 const showProduct = (producto) => {
 
@@ -50,6 +51,48 @@ for(let i=1; i<producto.images.length; i++){
 </div>
 `
 };
+
+const showRel = (producto, relacionados) =>{
+   
+    
+
+    let autoRel = `
+    <br>
+    <h3 class='text-center'>Productos Relacionados</h3> 
+
+    <div class='container'>
+        <div class='row justify-content-center'>
+        
+    ` 
+
+    for(let i=0; i<producto.relatedProducts.length; i++){
+
+        let auto=producto.relatedProducts[i];
+
+        autoRel+=`
+            <div class='col-4'>
+                <img src='${relacionados[auto].imgSrc}' class='img-thumbnail'>
+                <p>${relacionados[auto].name} ${relacionados[auto].currency}$${relacionados[auto].cost} </p>
+
+                
+            
+            
+        </div>      
+        `
+
+
+
+        };
+
+        document.getElementById('relacionados').innerHTML= autoRel + `
+            </div>
+    </div>
+        `
+    }
+
+
+
+
 
 const califica = (num) => {
 
@@ -156,5 +199,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     })
 
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            categoriesArray = resultObj.data;
+
+           showRel(productInfo,categoriesArray);
+        }
+    });
 
 });
