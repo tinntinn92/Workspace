@@ -140,3 +140,19 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#dropdownUser{
+
+  background: rgb(41, 40, 40);
+}
+
+.dropMenu{
+
+  color: white;
+  
+}
+
+.dropdown :hover{
+  background-color: grey;
+
+}

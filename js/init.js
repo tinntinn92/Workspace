@@ -7,43 +7,77 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 
-var showSpinner = function(){
+var showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 }
 
-var hideSpinner = function(){
+var hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
-var getJSONData = function(url){
-    var result = {};
-    showSpinner();
-    return fetch(url)
+var getJSONData = function (url) {
+  var result = {};
+  showSpinner();
+  return fetch(url)
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else{
+      } else {
         throw Error(response.statusText);
       }
     })
-    .then(function(response) {
-          result.status = 'ok';
-          result.data = response;
-          hideSpinner();
-          return result;
+    .then(function (response) {
+      result.status = 'ok';
+      result.data = response;
+      hideSpinner();
+      return result;
     })
-    .catch(function(error) {
-        result.status = 'error';
-        result.data = error;
-        hideSpinner();
-        return result;
+    .catch(function (error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
     });
+}
+
+const mostrarBarra = () => {
+
+  let local = JSON.parse(localStorage.getItem('datos'));
+
+  let innerHTML = `
+  <a class="py-3 d-none d-md-inline-block" href="index.html">Inicio</a>
+  <a class="py-3 d-none d-md-inline-block" href="categories.html">Categorías</a>
+  <a class="py-3 d-none d-md-inline-block" href="products.html">Productos</a>
+  <a class="py-3 d-none d-md-inline-block" href="sell.html">Vender</a>
+  
+  <div class="dropdown" >
+    <a href="#" class=" d-none d-md-inline-block dropdown-toggle" role="button" id="nombreUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img src="${local.img}" id="userImg"> ${local.usuario} 
+    </a>
+    <div class="dropdown-menu dropdown-menu-dark" id="dropdownUser" aria-labelledby="nombreUser">
+      <a class="dropdown-item dropMenu" href="cart.html"><p class="dropMenu"><i class="fas fa-shopping-cart"></i> Mi carrito </p></a>
+      <a class="dropdown-item" href="my-profile.html"><p class="dropMenu"> <i class="fas fa-id-card"></i>  Mi perfil  </p></a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item "><input type="button" class="btn btn-danger" id="desconectar" onclick="desconectar()" value='Desconectar'></input></a>
+    </div>
+     
+          
+    
+  
+ 
+`
+
+  document.getElementById('barra').innerHTML = innerHTML;
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function (e) {
+
+
+  mostrarBarra();
+
 });
 
 
