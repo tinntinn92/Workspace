@@ -11,8 +11,9 @@ function signOut() {
 const desconectar = () => {
     
     localStorage.clear();
+    checkStatus();
     signOut();
-    location.href = '../Workspace/login.html';
+    
     
 
     
