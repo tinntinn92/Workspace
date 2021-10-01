@@ -117,7 +117,7 @@ const showRel = (producto, relacionados) =>{
 
         autoRel+=`
             <div class='col-4'>
-                <img src='${relacionados[auto].imgSrc}' class='img-thumbnail'>
+                <a href=""><img src='${relacionados[auto].imgSrc}' class='img-thumbnail'></a>
                 <p>${relacionados[auto].name} ${relacionados[auto].currency}$${relacionados[auto].cost} </p>
 
                 
