@@ -9,13 +9,15 @@
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="css/estilo.css">
-  
+  <link rel="stylesheet" href="css/carrito.css">
+
   <!--google-->
   <meta name="google-signin-scope" content="profile email">
-  <meta name="google-signin-client_id" content="875766812579-hgnl5kelarp9gcr8aev0nm9ih4ho4l6b.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="875766812579-hgnl5kelarp9gcr8aev0nm9ih4ho4l6b.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -23,22 +25,6 @@
 
   <script src="js/desconectar.js"></script>
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
@@ -47,17 +33,84 @@
 <body onload="onLoad()">
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between" id="barra">
-    
+
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <div class="m-0 vh-10 row justify-content-center align-item-center">
+    <div class="col-auto text-center">
+      <h2 id="headder"><i class="fas fa-shopping-cart"></i> Mi carrito</h2>
+
+
+    </div>
+
+
+
+  </div>
+  
+  <br>
+  <div class="container">
+    <div id="producto">
+
+
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 order-md-1">
+        
+        <form class="needs-validation" id="sell-info">
+         
+          
+         
+         
+          <hr class="mb-4">
+          <h5 class="mb-3">Seleccione envio</h5>
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
+              <label class="custom-control-label" for="goldradio">Premium (15%)</label> <small>2 a 5 días</small>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
+              <label class="custom-control-label" for="premiumradio">Express (7%)</label> <small>5 a 8 días</small>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+              <label class="custom-control-label" for="standardradio">Estándar (5%)</label> <small>12 a 15 días</small>
+            </div>
+            
+          </div>
+          <hr class="mb-4">
+          <h4 class="mb-3">Costos</h4>
+          <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Sub Total</h6>
+                 
+                </div>
+                <span class="text-muted" id="productCostText">-</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Envio</h6>
+                  
+                </div>
+                <span class="text-muted" id="envio">-</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total ($)</span>
+                <strong id="totalCostText">-</strong>
+              </li>
+            </ul>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg" type="submit">Comprar</button>
+        </form>
+      </div>
     </div>
   </div>
+  
+  
+
+  
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
