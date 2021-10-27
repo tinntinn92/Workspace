@@ -70,6 +70,17 @@ const mostrarBarra = () => {
   document.getElementById('barra').innerHTML = innerHTML;
 }
 
+function convertir(img) {
+  img.crossOrigin="anonymous";
+  var canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  var contexto = canvas.getContext("2d");
+  contexto.drawImage(img, 0, 0,img.width, img.height);
+  var dataURL = canvas.toDataURL("image/jpeg");
+  return dataURL;
+}
+
 
 
 

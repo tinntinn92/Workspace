@@ -10,7 +10,8 @@
   <title>eMercado - Todo lo que busques está aquí</title>
   <!--google-->
   <meta name="google-signin-scope" content="profile email">
-  <meta name="google-signin-client_id" content="875766812579-hgnl5kelarp9gcr8aev0nm9ih4ho4l6b.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="875766812579-hgnl5kelarp9gcr8aev0nm9ih4ho4l6b.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <script src="js/desconectar.js"></script>
@@ -45,29 +46,63 @@
 <body onload="onLoad()">
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between" id="barra">
-     
+
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+
+  <div class="text-center p-4">
+    <h2>Mi perfil</h2>
+    <p class="lead">Aqui puedes modificar tus datos
+    </p>
+
   </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+  <div class="row justify-content-center" id="perfil">
+
   </div>
+  <br>
+  <div class="container">
+
+    <div class="row justify-content-center" id="datos">
+
+      <div class="row">
+        <form action="" class="needs-validation">
+          <div class="col-md-8 mb-3">
+            <div class="row">
+              <label for="nombre" class="form-label">Nombres</label>
+              <input type="text" name="" id="nombre" class="form-control" required>
+            </div>
+            <div class="row">
+              <label for="apellido" class="form-label">Apellidos</label>
+              <input type="text" name="" id="apellido" class="form-control" required>
+            </div>
+            <div class="row">
+              <label for="edad" class="form-label">Edad </label>
+              <input type="number" id="edad" min="0" max="99" class="form-control" required>
+            </div>
+            <div class="row">
+              <label for="email" class="form-label"> Email</label>
+              <input type="text" name="" id="email" class="form-control" required>
+            </div>
+            <div class="row">
+              <label for="telefono" class="form-label"> Telefono</label>
+              <input type="text" name="" id="telefono" class="form-control" required>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="enviarDatos()">Guardar datos</button>
+        </form>
+      </div>
+
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

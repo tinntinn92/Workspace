@@ -49,6 +49,9 @@ function onSignIn(googleUser) {
     datos.estado = 'Conectaado';
     datos.img = profile.getImageUrl();
     datos.google = 'ok';
+    datos.email = profile.getEmail();
+    datos.edad = 'No a ingresado su edad';
+    datos.telefono = 'No a ingresado su numero de telefono';
 
 
     location.href = '../Workspace/index.html';

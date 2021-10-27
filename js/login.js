@@ -15,7 +15,14 @@ const login = () => {
 
 
     if (usuario.value.trim() == '' || pass.value.trim() == '') {
-        alert('Falta completar algun campo');
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Falta completar algun campo',
+
+        })
+
+
     } else {
         let datos = {};
 
@@ -23,6 +30,9 @@ const login = () => {
         datos.pass = pass.value;
         datos.estado = 'conectado';
         datos.img = 'img/perfil.jpeg'
+        datos.email = 'No a ingresado un mail';
+        datos.edad = 'No a ingresado su edad';
+        datos.telefono = 'No a ingresado su numero de telefono';
 
 
 
