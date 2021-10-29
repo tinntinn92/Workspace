@@ -23,21 +23,28 @@ function showCategoriesList(array) {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))) {
 
             htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
-        <div class="row">
-        <div class="col-3">
-            <a href="product-info.html"><img src="` + category.imgSrc + `"  class="img-thumbnail"></a>
-        </div>
-        <div class="col">
-            <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-1">`+ category.name + `</h4>
-                <h6 class='mb-1'> ` + category.cost + category.currency + ` <h4> 
-                <small class="text-muted">` + category.soldCount + ` artículos</small>
+
+            <div class="col-md-4">
+            
+            <div class="card mb-4 shadow-sm">
+                <div class="card-img">
+                    <img src="${category.imgSrc}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <b>${category.name}</b>
+                    <p class="card-text">${category.description}</p>
+                    <p>${category.currency}$${category.cost}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a  class="btn btn-sm btn-outline-secondary" href="product-info.html">Info</a>
+                    <a class="btn btn-sm btn-outline-secondary">Agregar <i class="fas fa-cart-plus"></i></a>
+                  </div>
+                  <small class="text-muted">${category.soldCount} vendidos</small>
+                </div>
+              </div>
             </div>
-            <p class="mb-1">` + category.description + `</p>
-        </div>
-    </div>
-        </div>
+          </div>
+     
         `
 
             document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
