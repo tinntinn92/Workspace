@@ -22,6 +22,7 @@
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/perfil.css">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -41,6 +42,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body onload="onLoad()">
@@ -66,7 +69,7 @@
 
       <div class="row">
         <form action="" class="needs-validation">
-          <div class="col-md-8 mb-3">
+          <div class="col-sm">
             <div class="row">
               <label for="nombre" class="form-label">Nombres</label>
               <input type="text" name="" id="nombre" class="form-control" required>
@@ -86,9 +89,14 @@
             <div class="row">
               <label for="telefono" class="form-label"> Telefono</label>
               <input type="text" name="" id="telefono" class="form-control" required>
+
+            </div>
+            <br>
+            <div class="row">
+              <button class="btn btn-primary" onclick="enviarDatos()">Guardar datos</button>
             </div>
           </div>
-          <button class="btn btn-primary" onclick="enviarDatos()">Guardar datos</button>
+
         </form>
       </div>
 
