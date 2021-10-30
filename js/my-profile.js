@@ -6,7 +6,7 @@ let datos = JSON.parse(localStorage.getItem('datos'));
 const showProfile = () => {
     document.getElementById('perfil').innerHTML = `
     <div class='row'>
-        <div class= 'col-sm circuloPerfil'>
+        <div class= 'col-sm-3 circuloPerfil'>
             <img src="${datos.img}" alt="" class="img-fluid" id="imgPerfil">
         </div>
         <div class='col-sm'>
@@ -64,7 +64,9 @@ const changePic = () => {
     localStorage.setItem('datos', JSON.stringify(datos));
 
     showProfile();
-    mostrarBarra()
+    mostrarBarra();
+
+    document.getElementById('urlImg').value='';
 
 }
 
