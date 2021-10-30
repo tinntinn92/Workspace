@@ -2,8 +2,10 @@
     border-radius: 50%;
     border: 1px solid rgba(221, 221, 221, 0);;
     width: 25%;
+    height: 25%;
     right: 0%;
     object-fit: cover;
+    border-radius: 100%;
     
 }
 #nombreUser{

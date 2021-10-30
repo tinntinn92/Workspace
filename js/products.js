@@ -36,8 +36,8 @@ function showCategoriesList(array) {
                     <p>${category.currency}$${category.cost}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <a  class="btn btn-sm btn-outline-secondary" href="product-info.html">Info</a>
-                    <a class="btn btn-sm btn-outline-secondary">Agregar <i class="fas fa-cart-plus"></i></a>
+                    <a  class="btn btn-sm btn-outline-secondary" href="product-info.html">+Info</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="cart.html">Agregar <i class="fas fa-cart-plus"></i></a>
                   </div>
                   <small class="text-muted">${category.soldCount} vendidos</small>
                 </div>
