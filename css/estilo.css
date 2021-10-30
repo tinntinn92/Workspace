@@ -1,15 +1,30 @@
-#userImg{
-    border-radius: 50%;
-    border: 1px solid rgba(221, 221, 221, 0);;
-    width: 25%;
-    height: 25%;
-    right: 0%;
-    object-fit: cover;
+.circulo{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    
+    
+}
+
+.circulo > #userImg{
+    width: 100%;
+    height: 100%;
     border-radius: 100%;
     
 }
-#nombreUser{
-    margin-left: 10%;
+
+.circuloPerfil{
+    width: 100px;
+    height: 100px;
+    
+
+}
+
+.circuloPerfil > #imgPerfil{
+
+    width: 100%;
+    height: 100%;
+    
 }
 
 #desconectar{

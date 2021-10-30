@@ -50,9 +50,15 @@ const mostrarBarra = () => {
   <a class="py-3 d-none d-md-inline-block" href="products.html">Productos</a>
   <a class="py-3 d-none d-md-inline-block" href="sell.html">Vender</a>
   
-  <div class="col-4 dropdown" >
+  
+  
+  <div class="dropdown" >
+    
     <a href="#" class=" d-none d-md-inline-block dropdown-toggle" role="button" id="nombreUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="${local.img}" id="userImg" class="img-fluid"> ${local.usuario} 
+    <div class="circulo ">
+    ${local.usuario} <img src="${local.img}" id="userImg" class="img-fluid"> 
+  </div>
+      
     </a>
     <div class="dropdown-menu dropdown-menu-dark" id="dropdownUser" aria-labelledby="nombreUser">
       <a class="dropdown-item dropMenu" href="cart.html"><p class="dropMenu"><i class="fas fa-shopping-cart"></i> Mi carrito </p></a>

@@ -6,8 +6,8 @@ let datos = JSON.parse(localStorage.getItem('datos'));
 const showProfile = () => {
     document.getElementById('perfil').innerHTML = `
     <div class='row'>
-        <div class= 'col-sm'>
-            <img src="${datos.img}" alt="" class="img-fluid">
+        <div class= 'col-sm circuloPerfil'>
+            <img src="${datos.img}" alt="" class="img-fluid" id="imgPerfil">
         </div>
         <div class='col-sm'>
             <ul>
