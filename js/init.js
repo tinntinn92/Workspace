@@ -52,7 +52,7 @@ const mostrarBarra = () => {
   
   
   
-  <div class="dropdown" >
+  <div class="dropdown " >
     
     <a href="#" class=" d-none d-md-inline-block dropdown-toggle" role="button" id="nombreUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <div class="circulo ">

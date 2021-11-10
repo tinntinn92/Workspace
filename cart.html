@@ -28,6 +28,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+
 </head>
 
 <body onload="onLoad()">
@@ -70,7 +71,7 @@
           <div class="row">
             <div class="col-md-7 mb-3">
               <label for="state">Pais</label>
-              <select class="custom-select d-block w-100" id="productCategory">
+              <select class="custom-select d-block w-100" id="pais">
                 <option value="">Elija su pais...</option>
                 <option>Argentina</option>
                 <option>Brasil</option>
@@ -86,47 +87,157 @@
           </div>
 
 
+          <!-- Envios-->
+
+
           <hr class="mb-4">
           <h5 class="mb-3">Seleccione envio</h5>
           <div class="d-block my-3">
             <div class="custom-control custom-radio">
-              <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
-                required="">
-              <label class="custom-control-label" for="goldradio">Premium (15%)</label> <small>2 a 5 días</small>
+              <input id="radio0" name="publicationType" type="radio" class="custom-control-input envios" value="0.15"
+                required>
+              <label class="custom-control-label" for="radio0">Premium (15%)</label> <small>2 a 5 días</small>
             </div>
             <div class="custom-control custom-radio">
-              <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
-              <label class="custom-control-label" for="premiumradio">Express (7%)</label> <small>5 a 8 días</small>
+              <input id="radio1" name="publicationType" type="radio" class="custom-control-input envios" value="0.07"
+                checked>
+              <label class="custom-control-label" for="radio1">Express (7%)</label> <small>5 a 8 días</small>
             </div>
             <div class="custom-control custom-radio">
-              <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
-              <label class="custom-control-label" for="standardradio">Estándar (5%)</label> <small>12 a 15 días</small>
+              <input id="radio2" name="publicationType" type="radio" class="custom-control-input envios" value="0.05">
+              <label class="custom-control-label" for="radio2">Estándar (5%)</label> <small>12 a 15 días</small>
             </div>
 
           </div>
-          <hr class="mb-4">
-          <h4 class="mb-3">Costos</h4>
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Sub Total</h6>
 
-              </div>
-              <span class="text-muted" id="productCostText">-</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Envio</h6>
+          <!--Modla pago -->
 
-              </div>
-              <span class="text-muted" id="envio">-</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total ($)</span>
-              <strong id="totalCostText">-</strong>
-            </li>
-          </ul>
           <hr class="mb-4">
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Selecciona metodo
+            de pago
+          </button>
+          <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+                  <div class="tabs mt-3">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      
+                      <label >
+                        <input type="radio" id="pagoTarjeta" name="metodoPago" value="card">
+                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab"
+                            data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> <img
+                              src="img/tarjetas.png" width="80"> </a> </li>
+                      </label>
+                      
+                      <label>
+                        <input type="radio" id="pagoBank" name="metodoPago" value="bank">
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab"
+                            href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img
+                              src="img/bank.jpg" width="80"> </a> </li>
+                      </label>
+                      <input type="radio" id="pagoAbitab" name="metodoPago" value="abitab">
+                      <label for="pagoAbitab">
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="abitab-tab" data-toggle="tab"
+                            href="#abitab" role="tab" aria-controls="abitab" aria-selected="false"> <img
+                              src="img/abitab.png" width="80"> </a> </li>
+                      </label>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                        <div class="mt-4 mx-4">
+                          <div class="text-center">
+                            <h5>Pago con tarjeta</h5>
+                          </div>
+                          <div class="form mt-3">
+                            <div class="inputbox"> <input type="text" name="name" class="form-control"
+                                required="required" placeholder="Nombre del titular"></div>
+                            <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control"
+                                required="required" placeholder="Numero de tarjeta"> </div>
+                            <div class="d-flex flex-row">
+                              <div class="inputbox"> <input type="text" name="name" min="1" max="999"
+                                  class="form-control" required="required" placeholder="Vencimiento"> </div>
+                              <div class="inputbox"> <input type="text" name="name" min="1" max="999"
+                                  class="form-control" required="required" placeholder="CVV"> </div>
+                            </div>
+                            <br>
+                            <div class="px-5 pay"> <button class="btn btn-success btn-block"
+                                data-dismiss="modal">Seleccionar</button> </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                        <div class="px-5 mt-5">
+                          <div class="text-center">
+                            <h5>Transferencia Bancaria</h5>
+                          </div>
+                          <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"
+                              placeholder="Banco"> </div>
+                          <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"
+                              placeholder="Nombre del Titular"> </div>
+                          <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"
+                              placeholder="Numero de cuenta"> </div>
+                          <br>
+                          <div class="pay px-5"> <button class="btn btn-primary btn-block "
+                              data-dismiss="modal">Seleccionar</button> </div>
+
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="abitab" role="tabpanel" aria-labelledby="abitab-tab">
+                        <div class="px-5 mt-5">
+
+                          <div><img src="img/barras.png" alt="" class="img-fluid"></div>
+                          <div>
+                            <p>Imprima el codigo y dirijase al local mas cercano</p>
+                          </div>
+                          <div class="pay px-5"> <button class="btn btn-success btn-block"
+                              data-dismiss="modal">Seleccionar</button> </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Totales-->
+
+          <br>
+          <br>
+          <div id="controlEnvios">
+            <h4 class="mb-3">Costos</h4>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Sub Total</h6>
+
+                </div>
+                <span class="text-muted" id="productCostText">-</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Envio</h6>
+
+                </div>
+                <span class="text-muted" id="envio">-</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total ($)</span>
+                <span id="total">-</span>
+              </li>
+            </ul>
+          </div>
+          <hr class="mb-4">
+
+
+
+
+
           <button class="btn btn-primary btn-lg" type="submit">Comprar</button>
         </form>
       </div>
