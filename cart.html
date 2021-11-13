@@ -20,8 +20,21 @@
     content="875766812579-hgnl5kelarp9gcr8aev0nm9ih4ho4l6b.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+  <!--Font awesome-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+  <!--Sweet alert-->
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!--animate.style-->
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
 
   <script src="js/desconectar.js"></script>
 
@@ -59,20 +72,27 @@
     <div class="row justify-content-md-center">
       <div class="col-md-8 order-md-1">
 
-        <form class="needs-validation" id="cart-info">
+        <form class="needs-validation" id="cart-info" onsubmit="event.preventDefault()" novalidate>
 
           <div class="row">
             <div class="col-md-12 mb-3">
               <label for="productDescription">Direccion</label>
-              <textarea class="form-control" id="productDescription" rows="1"
-                placeholder="Calle, numero, esquina"></textarea>
+              <input type="text" class="form-control" id="productDescription" rows="1"
+                placeholder="Calle, numero, esquina" required>
+              <div class="valid-feedback">
+                Correcto!
+              </div>
+              <div class="invalid-feedback">
+                Falta completar tu direccion
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-7 mb-3">
               <label for="state">Pais</label>
-              <select class="custom-select d-block w-100" id="pais">
-                <option value="">Elija su pais...</option>
+              <select class="custom-select d-block w-100" id="pais" required>
+
+                
                 <option>Argentina</option>
                 <option>Brasil</option>
                 <option>Chile</option>
@@ -116,35 +136,42 @@
           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Selecciona metodo
             de pago
           </button>
+
+          <span id="metodoSeleccionado"></span>
+
           <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
+                <div class="modal-header">
+                  <h4>Metodos de pago</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
                 <div class="modal-body">
                   <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
                   <div class="tabs mt-3">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                      
-                      <label >
-                        <input type="radio" id="pagoTarjeta" name="metodoPago" value="card">
-                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab"
-                            data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> <img
-                              src="img/tarjetas.png" width="80"> </a> </li>
-                      </label>
-                      
-                      <label>
-                        <input type="radio" id="pagoBank" name="metodoPago" value="bank">
-                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab"
-                            href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img
-                              src="img/bank.jpg" width="80"> </a> </li>
-                      </label>
-                      <input type="radio" id="pagoAbitab" name="metodoPago" value="abitab">
-                      <label for="pagoAbitab">
-                        <li class="nav-item" role="presentation"> <a class="nav-link" id="abitab-tab" data-toggle="tab"
-                            href="#abitab" role="tab" aria-controls="abitab" aria-selected="false"> <img
-                              src="img/abitab.png" width="80"> </a> </li>
-                      </label>
+
+
+
+                      <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab" onclick="seleccionTarjeta()"
+                          data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"><label>
+                            <img src="img/tarjetas.png" width="80"> </label></a> </li>
+
+
+
+                      <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab" onclick="seleccionBanco()"
+                          href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <label>
+                            <img src="img/bank.jpg" width="80"> </label></a> </li>
+
+
+
+                      <li class="nav-item" role="presentation"> <a class="nav-link" id="abitab-tab" data-toggle="tab" onclick="seleccionAbitab()"
+                          href="#abitab" role="tab" aria-controls="abitab" aria-selected="false"><label>
+                            <img src="img/abitab.png" width="80"> </label></a> </li>
                     </ul>
+
+
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
                         <div class="mt-4 mx-4">
@@ -152,19 +179,19 @@
                             <h5>Pago con tarjeta</h5>
                           </div>
                           <div class="form mt-3">
-                            <div class="inputbox"> <input type="text" name="name" class="form-control"
+                            <div class="inputbox"> <input type="text" name="name" class="form-control tarjeta"
                                 required="required" placeholder="Nombre del titular"></div>
-                            <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control"
-                                required="required" placeholder="Numero de tarjeta"> </div>
+                            <div class="inputbox"> <input type="text" name="name" min="1" max="999"
+                                class="form-control tarjeta" required="required" placeholder="Numero de tarjeta"> </div>
                             <div class="d-flex flex-row">
                               <div class="inputbox"> <input type="text" name="name" min="1" max="999"
-                                  class="form-control" required="required" placeholder="Vencimiento"> </div>
+                                  class="form-control tarjeta" required="required" placeholder="Vencimiento"> </div>
                               <div class="inputbox"> <input type="text" name="name" min="1" max="999"
-                                  class="form-control" required="required" placeholder="CVV"> </div>
+                                  class="form-control tarjeta" required="required" placeholder="CVV"> </div>
                             </div>
                             <br>
-                            <div class="px-5 pay"> <button class="btn btn-success btn-block"
-                                data-dismiss="modal">Seleccionar</button> </div>
+                            <div class="px-5 pay"> <button class="btn btn-success btn-block" data-dismiss="modal"
+                                onclick="seleccionTarjeta()">Seleccionar</button> </div>
                           </div>
                         </div>
                       </div>
@@ -173,15 +200,15 @@
                           <div class="text-center">
                             <h5>Transferencia Bancaria</h5>
                           </div>
-                          <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"
-                              placeholder="Banco"> </div>
-                          <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"
-                              placeholder="Nombre del Titular"> </div>
-                          <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"
-                              placeholder="Numero de cuenta"> </div>
+                          <div class="inputbox"> <input type="text" name="name" class="form-control banco"
+                              required="required" placeholder="Banco"> </div>
+                          <div class="inputbox"> <input type="text" name="name" class="form-control banco"
+                              required="required" placeholder="Nombre del Titular"> </div>
+                          <div class="inputbox"> <input type="text" name="name" class="form-control banco"
+                              required="required" placeholder="Numero de cuenta"> </div>
                           <br>
-                          <div class="pay px-5"> <button class="btn btn-primary btn-block "
-                              data-dismiss="modal">Seleccionar</button> </div>
+                          <div class="pay px-5"> <button class="btn btn-primary btn-block " data-dismiss="modal"
+                              onclick="seleccionBanco()">Seleccionar</button> </div>
 
                         </div>
                       </div>
@@ -192,8 +219,8 @@
                           <div>
                             <p>Imprima el codigo y dirijase al local mas cercano</p>
                           </div>
-                          <div class="pay px-5"> <button class="btn btn-success btn-block"
-                              data-dismiss="modal">Seleccionar</button> </div>
+                          <div class="pay px-5"> <button class="btn btn-success btn-block" data-dismiss="modal"
+                              onclick="seleccionAbitab()">Seleccionar</button> </div>
 
                         </div>
                       </div>
@@ -238,7 +265,7 @@
 
 
 
-          <button class="btn btn-primary btn-lg" type="submit">Comprar</button>
+          <button class="btn btn-primary btn-lg" type="" onclick="compreRealizada()">Comprar</button>
         </form>
       </div>
     </div>

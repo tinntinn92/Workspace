@@ -17,16 +17,18 @@ const showCart = (array) => {
        <br>
        <div class="container">
         <div class="row justify-content-center align-item-center">
-            <div class='col-3'>
+            <div class='col'>
             </div>
-            <div class='col-3'>
+            <div class='col'>
                 <b>Producto</b>
             </div>
-            <div class='col-3'>
+            <div class='col'>
                 <b>Cantidad</b>
             </div>
-            <div class='col-3'>
+            <div class='col'>
                 <b>Precio unitario</b>
+            </div>
+            <div class='col'>
             </div>
         </div>
         </div>
@@ -55,18 +57,21 @@ const showCart = (array) => {
 
         contenido += `
         <div class=" row  ">
-            <div class='col-3 '>
+            <div class='col '>
                 <img class="img-fluid img-thumbnail text-center " src="${array.articles[i].src}">
             </div>
-            <div class='col-3'>
+            <div class='col'>
                 <p>${array.articles[i].name}</p>
             </div>
-            <div class='col-3'>
+            <div class='col'>
                 <input class="cantidad" type="number" id="${array.articles[i].id}" value="${array.articles[i].count}" min="0" onclick="subTotal()">
                 
             </div>
-            <div class='col-3 align-content-center'>
+            <div class='col align-content-center'>
             <b>${moneda}$<span class="costo" >${costo}</span></b>
+            </div>
+            <div class='col '>
+            <button class='btn eliminar' onclick='elminarArt(${array.articles[i].id})'><i class="fas fa-trash-alt"></i></button>
             </div>
         </div>
       
@@ -83,31 +88,32 @@ const showCart = (array) => {
         `
 
     document.getElementById('envio').innerHTML = `<b>${moneda}$<span id='subTotEnvio'>${calcEnvio().toFixed(1)}</span></b>`
-    
-    document.getElementById('total').innerHTML= `<b>${moneda}$<span id='totalCompra'>${subTot + parseFloat(calcEnvio().toFixed(1))}</span></b>`
+
+    document.getElementById('total').innerHTML = `<b>${moneda}$<span id='totalCompra'>${subTot + parseFloat(calcEnvio().toFixed(1))}</span></b>`
 
 
 }
 
-const showPrices = () =>{
+const showPrices = () => {
     document.getElementById('subtotal').innerHTML = subTot;
 
 
 
-    document.getElementById('subTotEnvio').innerHTML= calcEnvio().toFixed(1);
+    document.getElementById('subTotEnvio').innerHTML = calcEnvio().toFixed(1);
 
-   document.getElementById('totalCompra').innerHTML= subTot + parseFloat(calcEnvio().toFixed(1))
+    document.getElementById('totalCompra').innerHTML = subTot + parseFloat(calcEnvio().toFixed(1))
 }
 
 const subTotal = () => {
 
     let cantidad = document.getElementsByClassName('cantidad');
-    console.log(cantidad[0].value);
+
 
     let unidad = document.getElementsByClassName('costo');
-    console.log(unidad[0].innerHTML)
 
 
+
+    
     for (let i = 0; i < cantidad.length; i++) {
 
         carrito.articles[i].subTot = cantidad[i].value * parseFloat(unidad[i].innerHTML);
@@ -126,12 +132,14 @@ const subTotal = () => {
 
     const reducer = (acc, curr) => acc + curr;
 
-    subTot = arrSub.reduce(reducer);
+    if (arrSub.length > 0) {
+        subTot = arrSub.reduce(reducer);
+    }else{
+        subTot-=subTot
+    }
 
 
 
-    console.log(carrito.articles[0].subTot)
-    console.log(carrito.articles[1].subTot)
 
     console.log(subTot);
 
@@ -139,11 +147,11 @@ const subTotal = () => {
 
 
 
-    document.getElementById('subTotEnvio').innerHTML= calcEnvio().toFixed(1);
+    document.getElementById('subTotEnvio').innerHTML = calcEnvio().toFixed(1);
 
-   document.getElementById('totalCompra').innerHTML= subTot + parseFloat(calcEnvio().toFixed(1))
+    document.getElementById('totalCompra').innerHTML = subTot + parseFloat(calcEnvio().toFixed(1))
 
-   
+
 
 }
 
@@ -166,8 +174,104 @@ const calcEnvio = () => {
 
 };
 
+const seleccionBanco = () => {
+    let camposTarjeta = document.getElementsByClassName('tarjeta');
+    let camposBanco = document.getElementsByClassName('banco');
+
+    for (let i = 0; i < camposTarjeta.length; i++) {
+        camposTarjeta[i].disabled = true
+    }
+    for (let i = 0; i < camposBanco.length; i++) {
+        camposBanco[i].disabled = false
+    }
+}
+
+const seleccionTarjeta = () => {
+    let camposTarjeta = document.getElementsByClassName('tarjeta');
+    let camposBanco = document.getElementsByClassName('banco');
+
+    for (let i = 0; i < camposBanco.length; i++) {
+        camposBanco[i].disabled = true
+    }
+    for (let i = 0; i < camposTarjeta.length; i++) {
+        camposTarjeta[i].disabled = false
+    }
+}
+
+const seleccionAbitab = () => {
+    let camposTarjeta = document.getElementsByClassName('tarjeta');
+    let camposBanco = document.getElementsByClassName('banco');
+
+    for (let i = 0; i < camposBanco.length; i++) {
+        camposBanco[i].disabled = true
+    }
+    for (let i = 0; i < camposTarjeta.length; i++) {
+        camposTarjeta[i].disabled = true
+    }
+}
 
 
+const compreRealizada = () => {
+
+    Swal.fire({
+        title: 'Compra exitosa!',
+        icon: 'success',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    })
+}
+
+const compraError = () => {
+
+    Swal.fire({
+        title: 'Hay errores en los campos!',
+        icon: 'error',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    })
+}
+
+const elminarArt = (articulo) => {
+    carrito.articles.splice(articulo, 1)
+
+
+
+    showCart(carrito);
+
+    subTotal()
+    showPrices()
+    console.log(subTot)
+
+
+}
+
+(function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -180,6 +284,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             showCart(carrito);
             calcEnvio();
+            seleccionTarjeta();
 
 
         }
@@ -191,9 +296,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById('radio1').addEventListener('change', () => {
         showPrices();
     });
-    document.getElementById('radio2').addEventListener('change', ()=>{
+    document.getElementById('radio2').addEventListener('change', () => {
         showPrices();
-        
+
     });
 
 });

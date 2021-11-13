@@ -17,3 +17,9 @@
       font-size: 3.5rem;
     }
   }
+
+  #listaPagos{
+    display: inline;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
