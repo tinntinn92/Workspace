@@ -184,6 +184,7 @@ const seleccionBanco = () => {
     for (let i = 0; i < camposBanco.length; i++) {
         camposBanco[i].disabled = false
     }
+    document.getElementById('metodoSel').innerHTML= 'Metodo de pago: Transferencia Bancara'
 }
 
 const seleccionTarjeta = () => {
@@ -196,6 +197,7 @@ const seleccionTarjeta = () => {
     for (let i = 0; i < camposTarjeta.length; i++) {
         camposTarjeta[i].disabled = false
     }
+    document.getElementById('metodoSel').innerHTML= 'Metodo de pago: Tarjeta de debito/credito'
 }
 
 const seleccionAbitab = () => {
@@ -208,6 +210,8 @@ const seleccionAbitab = () => {
     for (let i = 0; i < camposTarjeta.length; i++) {
         camposTarjeta[i].disabled = true
     }
+
+    document.getElementById('metodoSel').innerHTML= 'Metodo de pago: Redes de cobranza'
 }
 
 
@@ -285,6 +289,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showCart(carrito);
             calcEnvio();
             seleccionTarjeta();
+            document.getElementById('metodoSel').innerHTML= 'No hay metodo de pago seleccionado'
 
 
         }
@@ -292,6 +297,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     document.getElementById('radio0').addEventListener('change', () => {
         showPrices();
+        
     });
     document.getElementById('radio1').addEventListener('change', () => {
         showPrices();
